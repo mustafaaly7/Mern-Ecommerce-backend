@@ -1,15 +1,16 @@
 import express from "express";
 import morgan from "morgan";
+import SendResponse from "./helpers/sendResponse.js";
+import connectDb from "./utils/connectDb.js";
 
 const app = express()
 
-
+connectDb()
 app.use(express.json())
 app.use(morgan('tiny'))
 
 app.get("/",(req,res)=>{
-res.send("HELLO WORLD")
-
+SendResponse(res,400,false,null ,"Hello world")
 })
 
 
