@@ -3,6 +3,8 @@ import morgan from "morgan";
 import SendResponse from "./helpers/sendResponse.js";
 import connectDb from "./utils/connectDb.js";
 import authRoutes from "./routes/auth.js"
+import bookRoutes from './routes/books.js'
+
 
 
 const app = express()
@@ -12,7 +14,7 @@ app.use(morgan('tiny'))
 
 app.use("/auth" , authRoutes)
 
-
+app.use("/book",bookRoutes)
 
 app.get("/",(req,res)=>{
 SendResponse(res,400,false,null ,"Hello world")
