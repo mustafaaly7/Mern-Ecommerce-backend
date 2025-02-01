@@ -39,7 +39,8 @@ export const loginUser = async (req, res) => {
         const existingUser = await userModel.findOne({ email: value.email }).lean()
         if (!existingUser) return SendResponse(res, 404, true, null, "Email Not Found")
 
-const loginPassword = bcrypt.compare(value.password, existingUser.password)
+const loginPassword = await bcrypt.compare(value.password, existingUser.password)
+
 if(!loginPassword) return SendResponse(res, 404, true, null, "invalid password")
     
     delete existingUser.password
