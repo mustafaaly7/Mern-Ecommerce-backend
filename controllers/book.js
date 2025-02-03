@@ -84,3 +84,42 @@ SendResponse(res,200 , false ,allBooks,"data fetched successfully")
 
 }
 
+export const getRecentbooks =async(req,res)=>{
+
+
+  try {
+  const allBooks = await bookModel.find().sort({createdAt : -1}).limit(4)
+  SendResponse(res,200 , false ,allBooks,"data fetched successfully")
+    
+  
+  
+  
+  
+  } catch (error) {
+    
+    SendResponse(res, 400, true, null, error.message)
+  
+  }
+  
+  
+  
+  }
+
+export const getSinglebook =async(req,res)=>{
+  try {
+    
+    const {id} = req.params
+    
+    const book = await bookModel.findById(id)
+if(!book) return (res, 404, true, null, "Book not found")
+
+SendResponse(res,200 , false,book ,"hello world")
+
+  } catch (error) {
+    SendResponse(res, 400, true, null, error.message)
+    
+  }
+
+
+
+}
