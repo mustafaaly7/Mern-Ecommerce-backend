@@ -5,6 +5,10 @@ url:{
     type : String,
     required : true
 },
+title:{
+    type : String,
+    required : true
+},
 author:{
     type : String,
     required : true

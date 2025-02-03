@@ -10,7 +10,7 @@ if(!bearerToken) return sendResponse(res , 404 , null ,true , "Token not found")
     const token = bearerToken.split(' ')[1]
     const decoded  = jwt.verify(token , process.env.AUTH_SECRET)
 req.user = decoded
-console.log("decoded => " , decoded);
+// console.log("decoded => " , decoded);
 next()
 
 }
