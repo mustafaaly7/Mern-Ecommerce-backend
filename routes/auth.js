@@ -7,6 +7,7 @@ const routes = express.Router()
 
 
 routes.post("/signup" , registerUser)
+
 routes.post("/signin" , loginUser)
 
 routes.get("/myinfo" ,authenticateUser, userInfo)
