@@ -30,7 +30,7 @@ export function authenticateAdmin(req,res,next){
     if(decoded.role == "admin"){
 
         req.user = decoded
-        console.log("decoded => " , decoded);
+        // console.log("decoded => " , decoded);
         next()
     }else{
 
