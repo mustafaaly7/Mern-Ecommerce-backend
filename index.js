@@ -7,12 +7,22 @@ import bookRoutes from './routes/books.js'
 import favouriteRoutes from "./routes/favourite.js"
 import orderRoutes from "./routes/order.js"
 import cartRoutes from "./routes/cart.js"
+import cors from "cors";
+
+
 
 const app = express()
 
 app.use(express.json())
 
 connectDb()
+
+app.use(cors({
+    origin: "*", // Allow frontend
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
+app.options("*", cors()); // Handle preflight requests
 
 app.use(morgan('tiny'))
 
