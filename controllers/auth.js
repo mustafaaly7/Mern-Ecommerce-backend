@@ -62,7 +62,7 @@ SendResponse(res, 200, false, {token  , existingUser}, "User Logged In succesful
 
 export const userInfo =async (req,res)=>{
 
-const user = await userModel.find({_id : req.user._id}).populate("books")
+const user = await userModel.find({_id : req.user._id}).populate("favourites").populate("orders").populate("cart")
 delete user.password
 SendResponse(res ,200 ,false , user ,"User info fetched successfully")
 
