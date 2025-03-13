@@ -3,7 +3,7 @@ import { authenticateAdmin, authenticateUser } from "../middlewares/authenticati
 import { addTofav, getFav, removeFav } from "../controllers/favourite.js";
 
 const routes = express.Router()
-
+// to add books on favourite
 routes.put("/addtofavourite",authenticateUser,addTofav)
 
 routes.put("/remove-book" ,authenticateUser, removeFav)
