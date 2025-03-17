@@ -36,6 +36,8 @@ export const removefromCart = async(req,res)=>{
 try {
     
     const { bookid } = req.params
+    // console.log("book id " , bookid);
+    
     const user = await userModel.findById(req.user._id)
     const isbookAdded = user.cart.includes(bookid)
 
