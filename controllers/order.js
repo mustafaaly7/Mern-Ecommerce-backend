@@ -23,7 +23,8 @@ export const placeOrder = async (req, res) => {
                 $push: {
                     orders: orderFromDB._id
                 }
-            })
+            },
+            { new: true, runValidators: true })
 
             // now removing and clearing user cart 
 

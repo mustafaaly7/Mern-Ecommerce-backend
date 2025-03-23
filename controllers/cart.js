@@ -32,16 +32,16 @@ export const addTocart = async (req, res) => {
 }
 
 
-export const removefromCart = async(req,res)=>{
-try {
-    
-    const { bookid } = req.params
-    // console.log("book id " , bookid);
-    
-    const user = await userModel.findById(req.user._id)
-    const isbookAdded = user.cart.includes(bookid)
+export const removefromCart = async (req, res) => {
+    try {
 
-    if (!isbookAdded) return SendResponse(res, 400, false, null, "Book is not in your cart")
+        const { bookid } = req.params
+        // console.log("book id " , bookid);
+
+        const user = await userModel.findById(req.user._id)
+        const isbookAdded = user.cart.includes(bookid)
+
+        if (!isbookAdded) return SendResponse(res, 400, false, null, "Book is not in your cart")
 
 
 
@@ -52,31 +52,31 @@ try {
         SendResponse(res, 200, false, updatedUser, "Book Removed successfully ")
 
 
-} catch (error) {
-    
+    } catch (error) {
+
 
         SendResponse(res, 400, true, null, error.message)
 
 
-}
+    }
 
 
 }
 
-export const getUsercart = async(req,res)=>{
-try {
-    
-
-const user = await userModel.findById(req.user._id).populate("cart")
-const cart = user.cart.reverse()
-
-SendResponse(res,200,false,cart , "Cart fetched successfully" )
+export const getUsercart = async (req, res) => {
+    try {
 
 
-} catch (error) {
-    SendResponse(res, 400, true, null, error.message)
-    
-}
+        const user = await userModel.findById(req.user._id).populate("cart")
+        const cart = user.cart.reverse()
+
+        SendResponse(res, 200, false, cart, "Cart fetched successfully")
+
+
+    } catch (error) {
+        SendResponse(res, 400, true, null, error.message)
+
+    }
 
 
 }
