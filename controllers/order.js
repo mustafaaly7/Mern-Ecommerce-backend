@@ -32,7 +32,8 @@ export const placeOrder = async (req, res) => {
                 $pull: {
                     cart: orderData._id
                 }
-            })
+            },
+            { new: true, runValidators: true })
 
         }
 
