@@ -15,7 +15,7 @@ routes.post("/add-book",authenticateAdmin, addBook)
 
 routes.put("/update-book" ,authenticateAdmin,updateBook)
 
-routes.delete("/delete-book" , deleteBook)
+routes.delete("/delete-book" ,authenticateAdmin, deleteBook)
 
 
 

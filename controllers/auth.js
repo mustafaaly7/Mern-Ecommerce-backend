@@ -62,7 +62,7 @@ SendResponse(res, 200, false, {token  , existingUser}, "User Logged In succesful
 
 export const userInfo =async (req,res)=>{
 
-const user = await userModel.find({_id : req.user._id}).populate("favourites").populate({
+const user = await userModel.find({_id : req.user._id}).populate("favourites").populate("orders").populate({
     path: "orders", // Populate orders
     populate: {
       path: "book", // Nested population for books inside orders
