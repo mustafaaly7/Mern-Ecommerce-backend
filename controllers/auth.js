@@ -79,3 +79,25 @@ SendResponse(res ,200 ,false , user ,"User info fetched successfully")
 
 
 
+
+export const getAlluser = async(req,res)=>{
+
+    try {
+        
+        const allUser = await userModel.find().populate("cart").populate("favourites").populate("orders").populate({
+            path: "orders",
+            populate:{
+                path:"book",
+            },
+        })
+if(!allUser) return SendResponse(res , 400 , true , null , "no user found")
+        
+SendResponse(res , 200 , false , allUser , "Users Fetched Successfully")
+
+
+
+    } catch (error) {
+        SendResponse(res, 400 , true, null  , error.message)
+    }
+
+}
