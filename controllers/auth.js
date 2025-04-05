@@ -101,3 +101,30 @@ SendResponse(res , 200 , false , allUser , "Users Fetched Successfully")
     }
 
 }
+
+
+export const deleteUser = async(req,res)=>{
+try {
+const {userid} = req.headers
+
+    
+const user = await userModel.findByIdAndDelete(userid)
+
+console.log("user" , user);
+
+SendResponse(res, 400 , true, null  , "user deleted Successfully")
+
+
+
+
+} catch (error) {
+    SendResponse(res, 400 , true, null  , error.message)
+
+
+}
+
+
+
+
+    
+}
